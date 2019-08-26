@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Tugas4Dicoding</string>
+    <string name="title_home">Tayagan Tv</string>
+    <string name="title_dashboard">Filem</string>
+    <string name="title_notifications">Kesukaan</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="change_language">Ganti Bahasa</string>
+
+</resources>

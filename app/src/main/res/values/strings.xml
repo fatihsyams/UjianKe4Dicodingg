@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">TaskDicoding4</string>
+    <string name="title_home">Tv Show</string>
+    <string name="title_dashboard">Movie</string>
+    <string name="title_notifications">Favorite</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="change_language">Change language</string>
+</resources>
