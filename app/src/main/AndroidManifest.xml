@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+
     <application
             android:allowBackup="true"
             android:hardwareAccelerated="true"
@@ -12,7 +13,21 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".screen.detail.detailtv.DetaillTvViewModel"></activity>
+        <receiver android:name=".widget.FavoriteWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                    android:name="android.appwidget.provider"
+                    android:resource="@xml/favorite_widget_info" />
+        </receiver>
+
+        <service
+                android:name=".widget.ServiceWidget"
+                android:permission="android.permission.BIND_REMOTEVIEWS" />
+
+        <activity android:name=".screen.ReminderActivity" />
         <activity android:name=".screen.detail.detailtv.TvDetailActivity" />
         <activity android:name=".screen.detail.DetailActivity" />
         <activity

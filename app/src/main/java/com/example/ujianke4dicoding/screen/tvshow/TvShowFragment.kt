@@ -16,13 +16,29 @@ import com.example.ujianke4dicoding.Load
 import com.example.ujianke4dicoding.R
 import com.example.ujianke4dicoding.adapter.MultiAdapter
 import com.example.ujianke4dicoding.adapter.TvAdapter
+import com.example.ujianke4dicoding.response.responsetv.ResultsItemss
 import kotlinx.android.synthetic.main.fragment_movies.*
 import kotlinx.android.synthetic.main.fragment_tv_show.*
 
 class TvShowFragment : Fragment() {
 
-    private val viewmodel : TvShowViewModel  by lazy {
-            ViewModelProviders.of(this).get(TvShowViewModel::class.java)
+
+    companion object {
+
+        fun newInstance(query: String = ""): TvShowFragment {
+
+            val fragment = TvShowFragment()
+            val bundle = Bundle()
+            bundle.putString("keyquery", query)
+            fragment.arguments = bundle
+            return fragment
+        }
+    }
+
+    var query: String? = null
+    var tvShow: List<ResultsItemss> = listOf()
+    private val viewmodel: TvShowViewModel by lazy {
+        ViewModelProviders.of(this).get(TvShowViewModel::class.java)
     }
 
     override fun onCreateView(
@@ -36,21 +52,33 @@ class TvShowFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        query = arguments?.getString("keyquery")
+
         viewmodel.getDataTv()
+
 
         viewmodel.tvLoad.observe(this, Observer {
             pb_tv.visibility = if (it is Load.Loading) View.VISIBLE else View.GONE
 
-            if ( it is Load.Success) {
+
+            if (it is Load.Success) {
                 rec_tv.apply {
-                    adapter = TvAdapter(context, it.data.results?.mapNotNull { it } ?: emptyList())
+
+                    if (query != null) {
+                        tvShow = it.data.results!!.filter { it.name!!.contains(query!!) }
+                    } else if (query.equals("")) {
+                        tvShow = it.data.results!!
+                    } else {
+                        tvShow = it.data.results!!
+                    }
+                    adapter = TvAdapter(context,  tvShow)
                     layoutManager = LinearLayoutManager(context)
                 }
-            }
-            else (it is Load.Fail)
-                Log.d("TAG", " DATA GA DAPAT")
+            } else (it is Load.Fail)
+            Log.d("TAG", " DATA GA DAPAT")
 
         })
     }
+
 
 }

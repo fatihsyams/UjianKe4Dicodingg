@@ -19,6 +19,8 @@ class MoviesViewModel : ViewModel() {
     private val _moviesLoad = MutableLiveData<Load<MoviesResponse>>()
     val moviesLoad = _moviesLoad as LiveData<Load<MoviesResponse>>
 
+
+
     init {
         _moviesLoad.value = Load.Uninitialized
     }
@@ -35,6 +37,10 @@ class MoviesViewModel : ViewModel() {
             _moviesLoad.value = Load.Fail(e)
             Log.d("TAG", "DATA NYA GA ADA")
         }
+    }
+
+    fun putQuerySearch(){
+
     }
 
 

@@ -7,5 +7,13 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="change_language">Ganti Bahasa</string>
+    <string name="reminder">Peringatan</string>
+    <string name="pengingat_harian">Pengingat Harian</string>www
+    <string name="pengingat_untuk_kembali_ke_applikasi">Pengingat untuk kembali ke applikasi</string>
+
+    <string name="search">Cari</string>
+    <string name="cari_disni">Cari Dsni </string>
+
+
 
 </resources>

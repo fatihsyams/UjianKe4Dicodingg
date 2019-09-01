@@ -1,7 +1,6 @@
 package com.example.ujianke4dicoding.database
 
 import androidx.room.*
-import com.example.ujianke4dicoding.response.ResultsItem
 import com.example.ujianke4dicoding.response.responsetv.ResultsItemss
 
 @Dao

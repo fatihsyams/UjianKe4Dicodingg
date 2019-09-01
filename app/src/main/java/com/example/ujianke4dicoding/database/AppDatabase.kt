@@ -8,7 +8,7 @@ import com.example.ujianke4dicoding.response.ResultsItem
 import com.example.ujianke4dicoding.response.responsetv.ResultsItemss
 
 
-@Database(entities = [ResultsItem::class, ResultsItemss::class], version = 5)
+@Database(entities = [ResultsItem::class, ResultsItemss::class], version = 6)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun movieDao(): MovieDao
     abstract fun tvDao() : TvDao
