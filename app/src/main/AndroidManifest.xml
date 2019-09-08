@@ -4,6 +4,12 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <permission
+            android:name="com.example.ujianke4dicoding"
+            android:protectionLevel="normal" />
+    <permission
+            android:name="com.example.ujianke4dicoding"
+            android:protectionLevel="normal" />
 
     <application
             android:allowBackup="true"
@@ -39,6 +45,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <receiver
+                android:name="notifikasi.AlarmReceiver"
+                android:enabled="true"
+                android:exported="true">
+    </receiver>
+
+        <provider
+                android:name=".providers.FavoriteMovieContentProviders"
+                android:authorities="com.example.ujianke4dicoding.providers"
+                android:exported="true"
+                android:readPermission="com.example.favoritemovies.providers.READ_DATABASE"
+                android:writePermission="com.example.favoritemovies.providers.WRITE_DATABASE" />
     </application>
 
 </manifest>

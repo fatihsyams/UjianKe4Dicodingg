@@ -1,5 +1,6 @@
 package com.example.ujianke4dicoding.database
 
+import android.database.Cursor
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.example.ujianke4dicoding.response.ResultsItem
@@ -19,5 +20,15 @@ interface MovieDao {
     fun deleteMovies(movies: ResultsItem)
 
     @Query("UPDATE resultsitem SET isFavorite=:isFavorite WHERE id = :idMovie")
-    fun updateFavoriteMovie(isFavorite:Boolean, idMovie:Int)
+    fun updateFavoriteMovie(isFavorite: Boolean, idMovie: Int)
+
+    @Query("SELECT * FROM resultsitem")
+    fun getAllByCursor(): Cursor
+
+
+    @Update
+    fun update(movie: ResultsItem): Int
+
+    @Query("SELECT * FROM resultsitem WHERE id = :id")
+    fun getItem(id : Int): Cursor
 }

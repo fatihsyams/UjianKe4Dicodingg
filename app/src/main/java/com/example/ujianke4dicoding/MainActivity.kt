@@ -83,6 +83,8 @@ class MainActivity : AppCompatActivity(),
         menuInflater.inflate(R.menu.menu_reminder, menu)
         menuInflater.inflate(R.menu.search_menu, menu)
 
+
+
         val searchItem = menu.findItem(R.id.search_menu)
         val searchView = searchItem.actionView as androidx.appcompat.widget.SearchView
         searchView.queryHint = "Search View Hint"

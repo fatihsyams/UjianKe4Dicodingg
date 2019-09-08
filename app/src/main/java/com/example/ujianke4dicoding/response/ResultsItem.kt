@@ -1,26 +1,52 @@
 package com.example.ujianke4dicoding.response
 
+import android.content.ContentValues
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
+const val COLUMN_NAME = "name"
+const val COLUMN_ID = "id"
+const val COLUMN_POSTER = "poster"
+
 @Entity(tableName = "resultsitem")
 data class ResultsItem(
 
-	@PrimaryKey(autoGenerate = true)
-	@field:SerializedName("id")
-	val id: Int? = null,
+    @ColumnInfo(name = "id")
+    @PrimaryKey(autoGenerate = true)
+    @field:SerializedName("id")
+    var id: Int? = null,
 
-	@field:SerializedName("overview")
-	val overview: String? = null,
+    @ColumnInfo(name = "overview")
+    @field:SerializedName("overview")
+    val overview: String? = null,
 
-	@field:SerializedName("title")
-	val title: String? = null,
+    @ColumnInfo(name = "title")
+    @field:SerializedName("title")
+    var title: String? = null,
 
-	@field:SerializedName("poster_path")
-	val posterPath: String? = null,
 
-	var isFavorite:Boolean = false
+    @ColumnInfo(name = "poster")
+    @field:SerializedName("poster_path")
+    var posterPath: String? = null,
 
-) : Serializable
+    var isFavorite: Boolean = false
+
+) : Serializable {
+    fun fromContentValues(values: ContentValues): ResultsItem {
+
+        val movie = ResultsItem()
+        if (values.containsKey(COLUMN_ID)) {
+            movie.id = values.getAsInteger(COLUMN_ID)
+        }
+        if (values.containsKey(COLUMN_NAME)) {
+            movie.title = values.getAsString(COLUMN_NAME)
+        }
+        if (values.containsKey(COLUMN_POSTER)) {
+            movie.posterPath = values.getAsString(COLUMN_POSTER)
+        }
+        return movie
+    }
+}
